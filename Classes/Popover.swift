@@ -49,6 +49,7 @@ open class Popover: UIView {
   open var highlightCornerRadius: CGFloat = 0
   open var springDamping: CGFloat = 0.7
   open var initialSpringVelocity: CGFloat = 3
+	open var sourceViewSpacing: CGFloat = 0
 
   // custom closure
   open var willShowHandler: (() -> ())?
@@ -133,13 +134,13 @@ open class Popover: UIView {
       point = inView.convert(
         CGPoint(
           x: fromView.frame.origin.x + (fromView.frame.size.width / 2),
-          y: fromView.frame.origin.y
+          y: fromView.frame.origin.y - sourceViewSpacing
       ), from: fromView.superview)
     case .down, .auto:
       point = inView.convert(
         CGPoint(
           x: fromView.frame.origin.x + (fromView.frame.size.width / 2),
-          y: fromView.frame.origin.y + fromView.frame.size.height
+          y: fromView.frame.origin.y + fromView.frame.size.height + sourceViewSpacing
       ), from: fromView.superview)
     }
 
